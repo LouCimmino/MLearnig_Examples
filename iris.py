@@ -1,7 +1,6 @@
 import pandas as pd
 import mglearn
 import matplotlib as plt
-import seaborn as sns
 
 from sklearn.datasets import load_iris
 
