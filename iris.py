@@ -36,5 +36,5 @@ print("Target : {}".format(iris_dataset['target_names'][prediction]))
 
 y_pred = knn.predict(x_test)
 print("Predictions (test set) : {}".format(y_pred))
-print("Score (test set) : {:.2f}".format(knn.score(x_test, y_test)))
-print("Score (test set vs pred) : {:.2f}".format(np.mean(y_pred == y_test)))
+print("Score (test set XvsY) : {:.2f}".format(knn.score(x_test, y_test)))
+print("Score (predictions vs test set) : {:.2f}".format(np.mean(y_pred == y_test)))
