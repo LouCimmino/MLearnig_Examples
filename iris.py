@@ -1,8 +1,10 @@
 import pandas as pd
 import mglearn
 import matplotlib as plt
+import numpy as np
 
 from sklearn.datasets import load_iris
+from sklearn.neighbors import KNeighborsClassifier
 
 iris_dataset = load_iris()
 
@@ -21,3 +23,18 @@ pd.plotting.scatter_matrix(iris_dataframe, alpha=.9, c=y_train, figsize=(15, 15)
 iris_dataframe['y_train'] = y_train
 
 plt.pyplot.show()
+
+knn = KNeighborsClassifier(n_neighbors=1)
+
+knn.fit(x_train, y_train)
+x_new = np.array([[5, 2.9, 1, 0.2]])
+print("x_new.shape : {}".format(x_new.shape))
+
+prediction = knn.predict(x_new)
+print("Prediction : {}".format(prediction))
+print("Target : {}".format(iris_dataset['target_names'][prediction]))
+
+y_pred = knn.predict(x_test)
+print("Predictions (test set) : {}".format(y_pred))
+print("Score (test set) : {:.2f}".format(knn.score(x_test, y_test)))
+print("Score (test set vs pred) : {:.2f}".format(np.mean(y_pred == y_test)))
